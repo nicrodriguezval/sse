@@ -18,7 +18,7 @@ public class DriversService {
 
         DriverPositionEmitterManager.addEmitter(driverId, emitter);
         emitter.onCompletion(() -> DriverPositionEmitterManager.removeEmitter(driverId, emitter));
-        emitter.onTimeout(emitter::complete);
+        emitter.onTimeout(() -> DriverPositionEmitterManager.removeEmitter(driverId, emitter));
 
         return emitter;
     }
