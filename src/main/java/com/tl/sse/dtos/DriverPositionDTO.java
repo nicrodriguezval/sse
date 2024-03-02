@@ -4,11 +4,6 @@ import lombok.Data;
 
 @Data
 public class DriverPositionDTO {
-    private Position position;
-
-    @Data
-    private static class Position {
-        private double latitude;
-        private double longitude;
-    }
+    private double latitude;
+    private double longitude;
 }
