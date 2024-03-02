@@ -22,12 +22,14 @@ public class DriverPositionEmitterManager {
     }
 
     public static void removeEmitter(String driverId, SseEmitter emitter) {
-        var emitters = driverPositionEmitters.get(driverId);
+        var optEmitters = getEmittersByDriverId(driverId);
 
-        if (emitters == null) {
+        if (optEmitters.isEmpty()) {
             log.warn("No emitters found for driver {}", driverId);
             return;
         }
+
+        var emitters = optEmitters.get();
 
         emitters.remove(emitter);
 
